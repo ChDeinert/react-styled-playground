@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { A } from 'glamorous';
 
-const WithGlamorous = (props) => {
+const WithGlamorousLink = (props) => {
   const { href, children } = props;
   return (
     <A
@@ -23,13 +23,13 @@ const WithGlamorous = (props) => {
   );
 };
 
-WithGlamorous.propTypes = {
+WithGlamorousLink.propTypes = {
   href: PropTypes.string.isRequired,
   children: PropTypes.node,
 };
 
-WithGlamorous.defaultProps = {
+WithGlamorousLink.defaultProps = {
   children: '',
 };
 
-export default WithGlamorous;
+export default WithGlamorousLink;

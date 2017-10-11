@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class InlineStyledLink extends Component {
+class InlineStyledButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mouseOver: false,
     };
+    this.clickHandler = this.clickHandler.bind(this);
     this.mouseEnterHandler = this.mouseEnterHandler.bind(this);
     this.mouseLeaveHandler = this.mouseLeaveHandler.bind(this);
   }
 
   render() {
-    const { href, children } = this.props;
+    const { children } = this.props;
     const { mouseOver } = this.state;
 
     const style = {
-      color: mouseOver ? '#669' : '#333',
-      textDecoration: 'none',
-      fontSize: '18px',
-      borderBottom: mouseOver ? '1px solid #669' : '1px dotted #333',
+      fontSize: '1rem',
+      color: mouseOver ? '#fff' : '#333',
+      padding: '.5em 1em',
+      border: '2px solid #669',
+      borderRadius: '.5em',
+      backgroundColor: mouseOver ? '#669' : '#fff',
+      cursor: 'pointer',
     };
     return (
-      <a
+      <button
         style={style}
-        href={href}
+        onClick={this.clickHandler}
         onMouseEnter={this.mouseEnterHandler}
         onMouseLeave={this.mouseLeaveHandler}
       >
         {children}
-      </a>
+      </button>
     );
+  }
+
+  clickHandler(event) {
+    event.preventDefault();
+    this.props.onClick();
   }
 
   mouseEnterHandler() {
@@ -46,13 +55,13 @@ class InlineStyledLink extends Component {
   }
 }
 
-InlineStyledLink.propTypes = {
-  href: PropTypes.string.isRequired,
+InlineStyledButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.node,
 };
 
-InlineStyledLink.defaultProps = {
+InlineStyledButton.defaultProps = {
   children: '',
 };
 
-export default InlineStyledLink;
+export default InlineStyledButton;
