@@ -1,6 +1,6 @@
 {
   "name": "react-styled-playground",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A playground to try out different ways to style React Components.",
   "scripts": {
     "start": "start-storybook -p 8080",
